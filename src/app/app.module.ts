@@ -44,6 +44,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 import { MatGridListModule, MatDividerModule, MatListModule, MatIconModule } from '../../node_modules/@angular/material';
+import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { MatGridListModule, MatDividerModule, MatListModule, MatIconModule } fro
 
     LoginFormComponent,
     AdminDashboardComponent,
+    DashboardSidebarComponent,
    
     
    
