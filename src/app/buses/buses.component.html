@@ -1,0 +1,121 @@
+<app-header></app-header>
+<div >
+<mat-card class="outer col-md-2 col-11"style="float: left;" id="temp1">
+    <h5 class="cityName">Select Your City</h5>
+    <br>
+    <mat-radio-group class="row"  [(ngModel)]="cityName">
+    <mat-radio-button class="col-md-12 col-12" value="NRT" color="primary">Narasaraopet</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="GNT" color="primary">Guntur</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="PDRL" color="primary">Piduguralla</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="VNK" color="primary">Vinukonda</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="SAP" color="primary">Sattenapalli</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="CPT" color="primary">Chilakaluripet</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="MTR" color="primary">Martur</mat-radio-button>
+    <mat-radio-button class="col-md-12 col-12" value="ADNK" color="primary">Addanki</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field class="col-md-12 col-12" *ngIf="cityName=='GNT'">
+    <mat-select placeholder="Select Your Stage" [(ngModel)]="stageName" >
+      <mat-option *ngFor="let boardings of boardinggnt" [value]="boardings.value">
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12 col-12" *ngIf="cityName=='NRT'" >
+    <mat-select placeholder="Select Your Stage" [(ngModel)]="stageName"  >
+      <mat-option *ngFor="let boardings of boardingnrt" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12" *ngIf="cityName=='PDRL'" >
+    <mat-select placeholder="Select Your Stage" >
+      <mat-option *ngFor="let boardings of boarding" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12" *ngIf="cityName=='VNK'" >
+    <mat-select placeholder="Select Your Stage" >
+      <mat-option *ngFor="let boardings of boarding" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12" *ngIf="cityName=='SAP'" >
+    <mat-select placeholder="Select Your Stage" >
+      <mat-option *ngFor="let boardings of boarding" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12" *ngIf="cityName=='CPT'" >
+    <mat-select placeholder="Select Your Stage" >
+      <mat-option *ngFor="let boardings of boarding" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12" *ngIf="cityName=='MTR'" >
+    <mat-select placeholder="Select Your Stage" >
+      <mat-option *ngFor="let boardings of boarding" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-12" *ngIf="cityName=='ADNK'" >
+    <mat-select placeholder="Select Your Stage" >
+      <mat-option *ngFor="let boardings of boarding" [value]="boardings.value" >
+        {{ boardings.viewValue }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </mat-card>
+</div>
+
+
+
+<div class="temp">
+  <p *ngIf='cityName==NULL&&stageName==NULL'>Select Your city to details of your desired buses </p>
+  <p *ngIf='cityName!=NULL&&stageName==NULL'>Select Your Stage to details of your desired buses </p>
+<mat-card class="col-md-9 col-11" id="busDetails" *ngIf="cityName!=NULL&&stageName!=NULL">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Bus No: {{ busno }}
+        </mat-panel-title>
+        <mat-panel-description>
+          city: {{ fromCity }}
+          &nbsp;
+          &nbsp;
+          stage: {{ fromStage }}
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+     <!-- <mat-form-field>
+        <input matInput placeholder="First name">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Age">
+      </mat-form-field>-->
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</mat-card>
+
+</div>
+

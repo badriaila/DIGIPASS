@@ -1,0 +1,73 @@
+/* NAVIGATION */
+ ul li a
+{
+  color:#fff;
+  font-family: 'Concert One', cursive;
+  font-size:15pt;
+  cursor: pointer;
+}
+ ul li a:hover
+{
+  color:#24377B;
+}
+ ul li a:focus
+{
+  color:#24377B;
+}
+ul li a,
+  ul li a:after,
+ul li a:before {
+    transition: all .5s;
+  }  
+  /* stroke */
+ ul.stroke li a,
+  nav.fill ul li a {
+    position: relative;
+  }
+  ul.stroke li a:after,
+  ul.fill li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #B51D0E;
+    height: 3px;
+  }
+  ul.stroke li a:hover:after {
+    width: 100%;
+  }
+  ul.fill li a {
+    transition: all 2s;
+  }
+  ul.fill li a:after {
+    text-align: left;
+    content: '.';
+    margin: 0;
+    opacity: 0;
+  }
+  ul.fill li a:hover {
+    color: #B51D0E;
+    z-index: 1;
+  }
+  ul.fill li a:hover:after {
+    z-index: -10;
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+  }
+  ul.fill li a:focus:after {
+    z-index: -10;
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+  }
+ .navbar-dark
+  {
+    background: rgba(24, 24, 24,0.8)!important;
+  }

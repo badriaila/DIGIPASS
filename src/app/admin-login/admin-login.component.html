@@ -1,0 +1,11 @@
+
+<mat-card class="col-md-4" id="chooseRole">
+    <h5>Choose your role</h5>
+    <br>
+    <mat-radio-group class="row"  [(ngModel)]="roleName">
+            <mat-radio-button class="col-md-6 col-12" value=1 color="primary">Admin</mat-radio-button>
+            <mat-radio-button class="col-md-6  col-12" value=0 color="primary">Record Assistant</mat-radio-button>
+    </mat-radio-group>   
+   <br>
+    <button mat-raised-button class="col-md-3" style="margin:0 auto;background-color:blue;color:white" (click)='openDialog()' >Submit</button>     
+</mat-card>
