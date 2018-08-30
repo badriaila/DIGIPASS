@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
   }
+ 
 
   url = window.location.pathname;
 

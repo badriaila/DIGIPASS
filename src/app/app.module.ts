@@ -1,20 +1,12 @@
-
-
-
-
-
-
+import { ProfileComponent } from './profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-
-
 import { AppComponent } from './app.component';
 import { SliderComponent } from './slider/slider.component';
 import { HeaderComponent } from './header/header.component';
 import { InfoFormComponent } from './info-form/info-form.component';
-
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -45,6 +37,12 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 
 import { MatGridListModule, MatDividerModule, MatListModule, MatIconModule } from '../../node_modules/@angular/material';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
+import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { UpdateStudentComponent } from './update-student/update-student.component';
+import { ManageBusesComponent } from './manage-buses/manage-buses.component';
+import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 
 @NgModule({
@@ -59,10 +57,16 @@ import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar
     AboutUsComponent,
     ContactUsComponent,
     PageNotFoundComponent,
-
+    ProfileComponent,
     LoginFormComponent,
     AdminDashboardComponent,
     DashboardSidebarComponent,
+    DashboardContentComponent,
+    AddStudentComponent,
+    UpdateStudentComponent,
+    ManageBusesComponent,
+    ManageRoutesComponent,
+    ManageUsersComponent,
    
     
    
@@ -96,7 +100,18 @@ import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'home',component:HomeComponent},
       {path:'buses',component:BusesComponent},
-      {path:'admin',component:AdminLoginComponent}
+      {path:'admin',component:AdminLoginComponent},
+      {path:'adminLogin',component:AdminDashboardComponent,children:[
+        {path:'profile',component:ProfileComponent},
+        {path:'dashboard',component:DashboardContentComponent},
+        {path:'addStudent',component:AddStudentComponent},
+        {path:'updateStudent',component:UpdateStudentComponent},
+        {path:'manageRoutes',component:ManageRoutesComponent},
+        {path:'manageBuses',component:ManageBusesComponent},
+        {path:'manageUsers',component:ManageUsersComponent}
+        
+      ]},
+    
     ]),
     MatDialogModule,
     MatGridListModule,

@@ -1,0 +1,23 @@
+
+/*.row1{
+    text-align: center;
+    
+}
+.analysis{
+    height: 100px; 
+    background-color: white;
+     border-radius: 5%;
+    box-shadow: 2px 1px 11px 0px rgba(119, 119, 119, 0.76);
+    -moz-box-shadow: 2px 1px 11px 0px rgba(119, 119, 119, 0.76);
+    -webkit-box-shadow: 2px 1px 11px 0px rgba(119, 119, 119, 0.76);
+}
+.odd{
+    margin-left: 30px;
+}
+.child{
+    margin-top: -15px;
+    height: 70px;
+    width: 70px;
+    border-radius: 5%;
+    background-color:rgb(255, 166, 0);
+}*/
