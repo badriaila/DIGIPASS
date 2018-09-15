@@ -1,25 +1,10 @@
 <div id="sidebardiv" >
 <mat-card style="background-image: linear-gradient(to bottom,#efefef,#eaeaea)">
-
-  <button mat-raised-button class="col-md-12" style="background-color: rgb(252, 84, 120);color:white" routerLink='profile'><mat-icon style="color:rgb(42, 0, 109)">perm_identity</mat-icon>Profile </button>
-  <br>
-  <br>
-  <button mat-raised-button class="col-md-12" style="background-color: rgb(211, 128, 33);color:white" routerLink='dashboard'><mat-icon style="color:rgb(0, 204, 255)">dashboard</mat-icon> Dashboard </button>
-  <br>
-  <br>
-  <button mat-raised-button class="col-md-12" style="background-color: rgb(98, 255, 111);color:white" routerLink='addStudent' ><mat-icon style="color:rgb(255, 141, 35)">add</mat-icon> Add student </button>
-  <br>
-  <br>
-  <button mat-raised-button class="col-md-12" style="background-color: rgb(173, 160, 88);color:white" routerLink='updateStudent' ><mat-icon style="color:rgb(67, 121, 22)">update</mat-icon>Update student </button>
-  <br>
-  <br>
-  <button mat-raised-button class="col-md-12"style="background-color:#ffd010;color:white" routerLink='manageRoutes' ><mat-icon style="color:gray">trending_flat</mat-icon> Manage routes </button>
-  <br>
-  <br>
-  <button mat-raised-button class="col-md-12" style="background-color: slateblue;color:white" routerLink='manageBuses'><mat-icon style="color:yellow">directions_bus</mat-icon> Manage buses </button>
-  <br>
-  <br>
-  <button mat-raised-button class="col-md-12" style="background-color:tomato;color:white" routerLink='manageUsers'><mat-icon style='color:black'>supervised_user_circle</mat-icon>Manage users </button>
+  <ng-container *ngFor="let nav of navItems">
+    <button routerLinkActive="active" type="button" class="btn btn-outline-primary col-md-12" style="color:black;font-size: 12px;" [routerLink]="nav.link"><i [class]="nav.icon"></i> {{nav.name}} </button>
+    <br><br>
+  </ng-container>
+  <button class="btn btn-danger col-md-12" (click)="logout()" style="color:rgb(255, 255, 255);font-size: 12px;">Logout</button>
 </mat-card>
 </div>
 

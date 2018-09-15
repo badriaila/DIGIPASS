@@ -1,14 +1,16 @@
 <h2 mat-dialog-title>Login Form</h2>
 <mat-dialog-content>
+  <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+  <div class="alert alert-success" *ngIf="success">{{success}}</div>
     <form class="example-form ">
         <mat-form-field class="col-md-12">
-          <input matInput placeholder="User Id">
+          <input matInput placeholder="Username or Email" name="usernameOrEmail" [(ngModel)]="data.usernameOrEmail">
         </mat-form-field>
         <mat-form-field class="col-md-12">
-            <input matInput placeholder="Password">
+            <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="data.password">
           </mat-form-field>      
       </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button routerLink='/adminLogin' [mat-dialog-close]="true">Login</button>
+  <button mat-raised-button (click)="login()" >Login</button>
 </mat-dialog-actions>

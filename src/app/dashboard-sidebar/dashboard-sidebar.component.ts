@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-dashboard-sidebar',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
+
+  @Input()path;
 
   ngOnInit() {
+  }
+
+  navItems=[
+    {name:'Dashboard',link:'dashboard',icon:'fas fa-tachometer-alt'},
+    {name:'Manage Students',link:'manageStudent',icon:'fas fa-user'},
+    {name:'Manage Routes',link:'manageRoutes',icon:'fas fa-map-marked-alt'},
+    {name:'Manage Buses',link:'manageBuses',icon:'fas fa-bus'},
+    {name:'Manage Users',link:'manageUsers',icon:'fas fa-users'},
+  ]
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['../'])
   }
 
 }

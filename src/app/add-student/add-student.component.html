@@ -1,3 +1,80 @@
-<p>
-  add-student works!
-</p>
+
+  <div class="header_add col-12" style="background-color: darkgray;line-height: 50px;">
+    Add Student
+  </div>
+  <div class="form row">
+    <div class="col-md-6 add_student_form">
+        <mat-form-field class="col-md-12">
+            <input matInput placeholder="Regd. No." >
+          </mat-form-field>
+      
+      <mat-form-field class="col-md-6">
+      <input matInput placeholder="First Name" >
+    </mat-form-field>
+    
+    <mat-form-field class="col-md-6">
+      <input matInput placeholder="Last Name">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <mat-select placeholder="Course">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+          <mat-select placeholder="Branch">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <mat-select placeholder="Year">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field class="col-md-6">
+              <input matInput placeholder="Mobile Number (optional)" >
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <input matInput placeholder="Email (optional)" >
+              </mat-form-field>  
+
+              <mat-form-field class="col-md-6">
+                  <mat-select placeholder="City">
+                    <mat-option *ngFor="let food of foods" [value]="food.value">
+                      {{food.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6">
+                    <mat-select placeholder="Stage">
+                      <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  
+                  <mat-form-field class="col-md-6">
+                    <input matInput placeholder="Bus No." >
+                  </mat-form-field> 
+
+
+                  <mat-form-field class="col-md-6">
+                    <input matInput placeholder="Seat No." >
+                  </mat-form-field> 
+  </div>
+
+  </div>
+

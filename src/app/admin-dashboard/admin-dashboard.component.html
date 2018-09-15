@@ -1,9 +1,9 @@
 <app-header></app-header>
 <div class="row">
     <div class="col-md-2 col-12">
-        <app-dashboard-sidebar ></app-dashboard-sidebar>
+        <app-dashboard-sidebar [path]="path" class="fixed"></app-dashboard-sidebar>
     </div>
 <div class="col-md-10 col-12 dashboardContent">
-         <router-outlet></router-outlet>
+         <router-outlet style="margin: auto"></router-outlet>
 </div>
 </div>

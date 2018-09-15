@@ -1,8 +1,10 @@
+import { UserService } from './services/user.service';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SliderComponent } from './slider/slider.component';
 import { HeaderComponent } from './header/header.component';
@@ -38,11 +40,13 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { MatGridListModule, MatDividerModule, MatListModule, MatIconModule } from '../../node_modules/@angular/material';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
-import { AddStudentComponent } from './add-student/add-student.component';
-import { UpdateStudentComponent } from './update-student/update-student.component';
 import { ManageBusesComponent } from './manage-buses/manage-buses.component';
 import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AuthService } from './services/auth.service';
+import { AutoLoginService } from './services/auto-login.service';
+import { ManageStudentsComponent } from './manage-students/manage-students.component';
+import { AddStudentComponent } from './add-student/add-student.component';
 
 
 @NgModule({
@@ -62,11 +66,11 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     AdminDashboardComponent,
     DashboardSidebarComponent,
     DashboardContentComponent,
-    AddStudentComponent,
-    UpdateStudentComponent,
     ManageBusesComponent,
     ManageRoutesComponent,
     ManageUsersComponent,
+    ManageStudentsComponent,
+    AddStudentComponent,
    
     
    
@@ -78,6 +82,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
     FormsModule,
     MatCardModule,
     MatRadioModule,
@@ -94,23 +99,25 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     MatTooltipModule,
     MatTableModule,
     MatSortModule,
+    ReactiveFormsModule,
     MatPaginatorModule,
     MatExpansionModule,
     RouterModule.forRoot([
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'home',component:HomeComponent},
       {path:'buses',component:BusesComponent},
-      {path:'admin',component:AdminLoginComponent},
-      {path:'adminLogin',component:AdminDashboardComponent,children:[
-        {path:'profile',component:ProfileComponent},
+      {path:'adminLogin',component:AdminLoginComponent, canActivate:[AutoLoginService]},
+      {path:'admin',component:AdminDashboardComponent,children:[
         {path:'dashboard',component:DashboardContentComponent},
-        {path:'addStudent',component:AddStudentComponent},
-        {path:'updateStudent',component:UpdateStudentComponent},
-        {path:'manageRoutes',component:ManageRoutesComponent},
+        {path:'manageStudent',component:ManageStudentsComponent,children:[
+          {path:'add_student',component:AddStudentComponent}]
+        },
+        {path:'manageRoutes',component:ManageRoutesComponent
+        },
         {path:'manageBuses',component:ManageBusesComponent},
         {path:'manageUsers',component:ManageUsersComponent}
         
-      ]},
+      ],canActivate:[AuthService]},
     
     ]),
     MatDialogModule,
@@ -125,7 +132,10 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     
   ],
   providers: [
-     ],
+    UserService,
+    AuthService,
+    AutoLoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
