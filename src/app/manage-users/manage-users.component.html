@@ -1,3 +1,15 @@
-<p>
-  manage-users works!
-</p>
+
+<mat-card>
+  <div class="row">
+    <div class="col-md-12 head" >
+  <button mat-stroked-button routerLink="add-users">Add User</button>
+  <button mat-stroked-button routerLink="del-users" style="margin-left: 25px;">Remove User</button>
+  <button mat-stroked-button routerLink="all-users" style="margin-left: 25px;">All Users</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <router-outlet></router-outlet>
+    </div>
+
+</div>
+</mat-card>

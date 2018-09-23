@@ -1,3 +1,15 @@
-<p>
-  manage-buses works!
-</p>
+
+<mat-card>
+  <div class="row">
+    <div class="col-md-12 head" >
+  <button mat-stroked-button routerLink="add-buses">Add Bus</button>
+  <button mat-stroked-button routerLink="del-buses" style="margin-left: 25px;">Remove Bus</button>
+  <button mat-stroked-button routerLink="all-buses" style="margin-left: 25px;">All Buses</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <router-outlet></router-outlet>
+    </div>
+
+</div>
+</mat-card>

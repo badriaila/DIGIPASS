@@ -1,0 +1,23 @@
+<div class="row" style="margin-left: 10px;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Username</th>
+        <th>Mobile</th>
+        <th>Email Id</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let route of routes">
+        <td>{{ route.id }}</td>
+        <td>{{ route.city }}</td>
+        <td>{{ route.mobile }}</td>
+        <td>{{ route.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  </div>
+  

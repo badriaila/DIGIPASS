@@ -1,0 +1,20 @@
+<div class="row" style="margin-left: 10px;">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Route Id</th>
+      <th>City</th>
+      <th>Stage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let route of routes">
+      <td>{{ route.id }}</td>
+      <td>{{ route.city }}</td>
+      <td>{{ route.stage }}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

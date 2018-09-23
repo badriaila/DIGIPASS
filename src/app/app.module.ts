@@ -37,7 +37,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
-import { MatGridListModule, MatDividerModule, MatListModule, MatIconModule } from '../../node_modules/@angular/material';
+import { MatGridListModule, MatDividerModule, MatListModule, MatIconModule, MatProgressBar } from '../../node_modules/@angular/material';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
 import { ManageBusesComponent } from './manage-buses/manage-buses.component';
@@ -48,6 +48,15 @@ import { AutoLoginService } from './services/auto-login.service';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { AdminDashboardSearchComponent } from './admin-dashboard-search/admin-dashboard-search.component';
+import { AddRouteComponent } from './add-route/add-route.component';
+import { DelRouteComponent } from './del-route/del-route.component';
+import { AllRoutesComponent } from './all-routes/all-routes.component';
+import { AddBusComponent } from './add-bus/add-bus.component';
+import { RemoveBusComponent } from './remove-bus/remove-bus.component';
+import { AllBusesComponent } from './all-buses/all-buses.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { RemoveUserComponent } from './remove-user/remove-user.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 
 @NgModule({
@@ -73,6 +82,15 @@ import { AdminDashboardSearchComponent } from './admin-dashboard-search/admin-da
     ManageStudentsComponent,
     AddStudentComponent,
     AdminDashboardSearchComponent,
+    AddRouteComponent,
+    DelRouteComponent,
+    AllRoutesComponent,
+    AddBusComponent,
+    RemoveBusComponent,
+    AllBusesComponent,
+    AddUserComponent,
+    RemoveUserComponent,
+    AllUsersComponent,
    
     
    
@@ -116,10 +134,22 @@ import { AdminDashboardSearchComponent } from './admin-dashboard-search/admin-da
           {path:'search_student',component:AdminDashboardSearchComponent}
         ]
         },
-        {path:'manageRoutes',component:ManageRoutesComponent
+        {path:'manageRoutes',component:ManageRoutesComponent,children:[
+          {path:'add-routes',component:AddRouteComponent},
+          {path:'del-routes',component:DelRouteComponent},
+            {path:'all-routes',component:AllRoutesComponent},
+        ]
         },
-        {path:'manageBuses',component:ManageBusesComponent},
-        {path:'manageUsers',component:ManageUsersComponent}
+        {path:'manageBuses',component:ManageBusesComponent,children:[
+          {path:'add-buses',component:AddBusComponent},
+          {path:'del-buses',component:RemoveBusComponent},
+          {path:'all-buses',component:AllBusesComponent},
+        ]},
+        {path:'manageUsers',component:ManageUsersComponent,children:[
+          {path:'add-users',component:AddUserComponent},
+          {path:'del-users',component:RemoveUserComponent},
+          {path:'all-users',component:AllUsersComponent},
+        ]}
         
       ],canActivate:[AuthService]},
     
