@@ -1,5 +1,3 @@
-import { LoginFormComponent } from './../login-form/login-form.component';
-import { MatDialog } from '@angular/material';
 import { Component} from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '../../../node_modules/@angular/router';

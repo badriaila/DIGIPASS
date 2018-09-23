@@ -1,4 +1,4 @@
-<div id="sidebardiv" >
+<div id="sidebardiv">
 <mat-card style="background-image: linear-gradient(to bottom,#efefef,#eaeaea)">
   <ng-container *ngFor="let nav of navItems">
     <button routerLinkActive="active" type="button" class="btn btn-outline-primary col-md-12" style="color:black;font-size: 12px;" [routerLink]="nav.link"><i [class]="nav.icon"></i> {{nav.name}} </button>

@@ -47,6 +47,7 @@ import { AuthService } from './services/auth.service';
 import { AutoLoginService } from './services/auto-login.service';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { AdminDashboardSearchComponent } from './admin-dashboard-search/admin-dashboard-search.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
     ManageUsersComponent,
     ManageStudentsComponent,
     AddStudentComponent,
+    AdminDashboardSearchComponent,
    
     
    
@@ -110,7 +112,9 @@ import { AddStudentComponent } from './add-student/add-student.component';
       {path:'admin',component:AdminDashboardComponent,children:[
         {path:'dashboard',component:DashboardContentComponent},
         {path:'manageStudent',component:ManageStudentsComponent,children:[
-          {path:'add_student',component:AddStudentComponent}]
+          {path:'add_student',component:AddStudentComponent},
+          {path:'search_student',component:AdminDashboardSearchComponent}
+        ]
         },
         {path:'manageRoutes',component:ManageRoutesComponent
         },

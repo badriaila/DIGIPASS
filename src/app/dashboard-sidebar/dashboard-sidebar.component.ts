@@ -21,6 +21,8 @@ export class DashboardSidebarComponent implements OnInit {
     {name:'Manage Routes',link:'manageRoutes',icon:'fas fa-map-marked-alt'},
     {name:'Manage Buses',link:'manageBuses',icon:'fas fa-bus'},
     {name:'Manage Users',link:'manageUsers',icon:'fas fa-users'},
+    {name:'Profile',link:'profile',icon:'fas fa-user-circle'},
+    
   ]
 
   logout(){

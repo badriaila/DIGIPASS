@@ -1,23 +1,24 @@
 
-  <div class="header_add col-12" style="background-color: darkgray;line-height: 50px;">
+ <!-- <div class="header_add col-12" style="background-color: darkgray;line-height: 50px;">
     Add Student
-  </div>
+  </div>-->
   <div class="form row">
+    <div class="col-md-6"></div>
     <div class="col-md-6 add_student_form">
-        <mat-form-field class="col-md-12">
-            <input matInput placeholder="Regd. No." >
+        <mat-form-field class="col-md-12" >
+            <input matInput placeholder="Regd. No." required  >
           </mat-form-field>
       
       <mat-form-field class="col-md-6">
-      <input matInput placeholder="First Name" >
+      <input matInput placeholder="First Name" required >
     </mat-form-field>
     
     <mat-form-field class="col-md-6">
-      <input matInput placeholder="Last Name">
+      <input matInput placeholder="Last Name" required>
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <mat-select placeholder="Course">
+        <mat-select placeholder="Course" required>
           <mat-option *ngFor="let food of foods" [value]="food.value">
             {{food.viewValue}}
           </mat-option>
@@ -25,7 +26,7 @@
       </mat-form-field>
 
       <mat-form-field class="col-md-4">
-          <mat-select placeholder="Branch">
+          <mat-select placeholder="Branch" required>
             <mat-option *ngFor="let food of foods" [value]="food.value">
               {{food.viewValue}}
             </mat-option>
@@ -33,7 +34,7 @@
         </mat-form-field>
 
         <mat-form-field class="col-md-4">
-            <mat-select placeholder="Year">
+            <mat-select placeholder="Year" required>
               <mat-option *ngFor="let food of foods" [value]="food.value">
                 {{food.viewValue}}
               </mat-option>
@@ -50,7 +51,7 @@
               </mat-form-field>  
 
               <mat-form-field class="col-md-6">
-                  <mat-select placeholder="City">
+                  <mat-select placeholder="City" required>
                     <mat-option *ngFor="let food of foods" [value]="food.value">
                       {{food.viewValue}}
                     </mat-option>
@@ -58,7 +59,7 @@
                 </mat-form-field>
 
                 <mat-form-field class="col-md-6">
-                    <mat-select placeholder="Stage">
+                    <mat-select placeholder="Stage" required>
                       <mat-option *ngFor="let food of foods" [value]="food.value">
                         {{food.viewValue}}
                       </mat-option>
@@ -67,13 +68,23 @@
 
                   
                   <mat-form-field class="col-md-6">
-                    <input matInput placeholder="Bus No." >
+                    <input matInput placeholder="Bus No." required>
                   </mat-form-field> 
 
 
                   <mat-form-field class="col-md-6">
-                    <input matInput placeholder="Seat No." >
+                    <input matInput placeholder="Seat No." required >
                   </mat-form-field> 
+
+                  <mat-form-field class="col-md-6">
+                    <input matInput placeholder="Receipt No." required >
+                  </mat-form-field> 
+
+                  <mat-form-field class="col-md-6">
+                    <input matInput placeholder="Amount" value="10000" disabled>
+                  </mat-form-field> 
+
+                  <button mat-flat-button color="primary" class="col-md-3" style="margin-left:200px">Add Student</button>
   </div>
 
   </div>
