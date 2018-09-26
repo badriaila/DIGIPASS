@@ -2,71 +2,45 @@
 <mat-card style="background-color: #f2f2f2">
     <div class="row row1">
 
-    <div class="parent col-md-2 col-9">
-        <div class="child1 ">
-            <img src="assets/images/dashboard_cities/guntur_dashboard.png" style="height: 100%;width: 100%;" alt="">
+        <div class="parent col-md-1 col-5" *ngFor="let total of totalCount">
+            <div class="child1 ">
+                    <p align="center" class="count">{{ total.data }}</p>
+                </div>
+        
+                <hr>
+        
+            <div align="center" class="child2" style="margin-top: -18px;">
+                   <p style="color: rgb(0, 0, 0)">{{ total.city }}</p>
+                </div>
         </div>
+  
     </div>
-    <div class="parent col-md-2 col-9">
-        <div class="child1 ">
-            <p style="color:white">hello</p>
-                    
-         </div>
+    
+    <div class="content-sideHead" style="margin-top: 50px;">
+            <p>Check the students of each city</p>
     </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    </div>
-    <br>
-    <div class="row row1">
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
-    </div>
-    <div class="parent col-md-2 col-9">
-            <div class="child1 ">
-                    <p style="color:white">hello</p>
-                            
-                 </div>
+
+    <div class="content-table">
+            <table class="table table-hover">
+                    <thead>
+                            <tr>
+                                    <th>Cities</th>
+                                    <th>Route</th>
+                                    <th>Total</th>
+                                    <th>Details</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor="let cities of totalCount">
+                                    <td>{{ cities.city }}</td>
+                                    <td> {{ cities.routeId }}</td>
+                                    <td></td>
+                                    <td> <button mat-mini-fab  color="primary" style="border-radius:50%;"> <i class="fas fa-greater-than"></i> </button> </td>
+                            </tr>
+                    </tbody>
+            </table>
     </div>
 
 
-      
-</div> 
 </mat-card>
 </div>  
