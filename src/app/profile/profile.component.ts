@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ChgCredComponent } from '../chg-cred/chg-cred.component';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+  opendialog(){
+    this.dialog.open(ChgCredComponent);
+  }
 
   ngOnInit() {
+  }
+  isDisabled=true;
+
+  activate(){
+    this.isDisabled=false;
+  }
+
+  submit(){
+    this.isDisabled=true;
   }
 
 }

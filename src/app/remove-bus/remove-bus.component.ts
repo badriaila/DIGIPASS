@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BusesService } from '../services/buses.service';
 
 @Component({
   selector: 'app-remove-bus',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RemoveBusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private busesService:BusesService) { }
 
   ngOnInit() {
+    this.getbuses();
   }
 
+    data:'';
+    buses=[];
+    submit(){
+      this.busesService.deleteBus(this.data);
+
+    }
+    
+    getbuses(){
+      {
+        this.busesService.getBuses()
+        .subscribe(res=>{
+          this.buses = res.json().response;
+          console.log(this.buses)
+        })
+    }
+  }
 }

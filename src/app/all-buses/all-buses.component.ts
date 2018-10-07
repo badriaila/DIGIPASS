@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BusesService } from '../services/buses.service';
 
 @Component({
   selector: 'app-all-buses',
@@ -7,20 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllBusesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private busesService: BusesService) { }
 
-  routes=[
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'01',city:'Narasaraopet',stage:'Siva Statue'},
-    {id:'02',city:'Narasaraopet',stage:'Kota center'}
-  ];
+buses=[];
+  getBuses(){
+    this.busesService.getBuses()
+    .subscribe(res=>{
+      this.buses = res.json().response;
+      console.log(this.buses)
+    })
+  }
+  submit(id){
+      this.busesService.deleteBus(id)
+      .subscribe(res=>{
+        console.log(res.json())
+        this.getBuses();
+  })
+}
 
-  ngOnInit() {
+    ngOnInit() {
+    this.getBuses();
   }
 
 }

@@ -31,7 +31,7 @@ export class AdminLoginComponent{
       this.success = result.response;
       localStorage.setItem('access_token',result.access_token);
       this.userService.decode(result.access_token)
-      this.router.navigate(['/admin/dashboard']);
+      this.router.navigate(['/admin/manageStudent']);
     },err=>{
       this.error = err.json().response;
     })
@@ -45,8 +45,5 @@ export class AdminLoginComponent{
     Validators.required,
     Validators.minLength(6)
   ]);
-checking(){
-  console.log(this.usernameOrEmail)
-}
 }
 

@@ -6,18 +6,22 @@
     <div class="alert alert-success" *ngIf="success">{{success}}</div>
         <form class="example-form ">
             <mat-form-field class="col-md-12">
-            <input matInput placeholder="Username or Email" min="5" [formControl]="usernameOrEmail" required name="usernameOrEmail" (change)='checking()'>
+            <input matInput placeholder="Username or Email" min="5" required name="usernameOrEmail" ngModel #usernameOrEmail='ngModel' [(ngModel)]="data.usernameOrEmail">
             
-          <!--<mat-error *ngIf="usernameOrEmail.formControl.errors.required"></mat-error>
-            <mat-error *ngIf="usernameOrEmail.hasError('minLength')"></mat-error>  -->
+            <!--<mat-error *ngIf="usernameOrEmail.formControl.errors.required"></mat-error>
+                <mat-error *ngIf="usernameOrEmail.hasError('minLength')"></mat-error>  -->
             </mat-form-field>
+                        <small *ngIf="usernameOrEmail.touched && usernameOrEmail.invalid" class="text-danger">
+                            invalid username
+                        </small>
             <mat-form-field class="col-md-12">
-                <input matInput placeholder="Password" required min="6" type="password" [formControl]="password" name="password">
+                <input matInput placeholder="Password" required min="6" type="password"
+                ngModel #password="ngModel" [(ngModel)] ="data.password" name="password">
                 <mat-error>please enter password</mat-error>
             </mat-form-field>      
         </form>
         <div style="margin-left: 25px;">
-            <button mat-raised-button color="primary" [disabled]="true" (click)="login()" >Login</button>
+            <button mat-raised-button color="primary" [disabled]="usernameOrEmail.invalid || password.invalid" (click)="login()" >Login</button>
         </div>
               
 </mat-card>

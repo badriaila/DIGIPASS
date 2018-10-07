@@ -2,17 +2,18 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Bus Id</th>
         <th>Bus No.</th>
         <th>Route </th>
+        <th>Action</th>
       </tr>
     </thead>
   
     <tbody>
-      <tr *ngFor="let route of routes">
-        <td>{{ route.id }}</td>
-        <td>{{ route.city }}</td>
-        <td>{{ route.stage }}</td>
+      <tr *ngFor="let bus of buses">
+        
+        <td>{{ bus.busno }}</td>
+        <td>{{ bus.route.city.name }} - {{ bus.route.stage.name }}</td>
+        <td><button class="btn btn-danger" (click)="submit(bus._id)">delete</button></td>
       </tr>
     </tbody>
   </table>

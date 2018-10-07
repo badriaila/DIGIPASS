@@ -13,7 +13,7 @@ export class AutoLoginService implements CanActivate {
     if(!token){
       return true;
     }else{
-      this.router.navigate(['/admin/dashboard']);
+      this.router.navigate(['/admin/manageStudent']);
       return false;
     }
   }

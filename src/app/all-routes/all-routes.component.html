@@ -1,18 +1,23 @@
 <div class="row" style="margin-left: 10px;">
-<table class="table table-striped">
+  <h3 class="h3" *ngIf="!routes.length">No Data</h3>
+<table class="table table-striped" *ngIf="routes.length">
   <thead>
     <tr>
-      <th>Route Id</th>
       <th>City</th>
       <th>Stage</th>
+      <th>Cost</th>
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let route of routes">
-      <td>{{ route.id }}</td>
-      <td>{{ route.city }}</td>
-      <td>{{ route.stage }}</td>
+      <td>{{ route?.city.name }}</td>
+      <td>{{ route?.stage.name }}</td>
+      <td>{{ route?.cost }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteRoute(route._id)">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>

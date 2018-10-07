@@ -57,6 +57,11 @@ import { AllBusesComponent } from './all-buses/all-buses.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { RemoveUserComponent } from './remove-user/remove-user.component';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { RoutesService } from './services/routes.service';
+import { ChgCredComponent } from './chg-cred/chg-cred.component';
+import { StudentService } from './services/student.service';
+import { StudentSearchDetailsComponent } from './student-search-details/student-search-details.component';
+import { ToasterService } from './services/toaster.service';
 
 
 @NgModule({
@@ -91,13 +96,15 @@ import { AllUsersComponent } from './all-users/all-users.component';
     AddUserComponent,
     RemoveUserComponent,
     AllUsersComponent,
+    ChgCredComponent,
+    StudentSearchDetailsComponent,
    
     
    
     
   ],
   entryComponents:[
-    LoginFormComponent
+    ChgCredComponent
   ],
   imports: [
     BrowserModule,
@@ -124,11 +131,16 @@ import { AllUsersComponent } from './all-users/all-users.component';
     MatExpansionModule,
     RouterModule.forRoot([
       {path:'',redirectTo:'home',pathMatch:'full'},
-      {path:'home',component:HomeComponent},
+      {path:'home',component:HomeComponent,children:[
+        {path:'studentSearchDetails',component:StudentSearchDetailsComponent},
+      ]},
       {path:'buses',component:BusesComponent},
+      {path:'about',component:AboutUsComponent},
+      {path:'contact',component:ContactUsComponent},
       {path:'adminLogin',component:AdminLoginComponent, canActivate:[AutoLoginService]},
       {path:'admin',component:AdminDashboardComponent,children:[
-        {path:'dashboard',component:DashboardContentComponent},
+        /*{path:'dashboard',component:DashboardContentComponent},*/
+        
         {path:'manageStudent',component:ManageStudentsComponent,children:[
           {path:'add_student',component:AddStudentComponent},
           {path:'search_student',component:AdminDashboardSearchComponent}
@@ -149,7 +161,8 @@ import { AllUsersComponent } from './all-users/all-users.component';
           {path:'add-users',component:AddUserComponent},
           {path:'del-users',component:RemoveUserComponent},
           {path:'all-users',component:AllUsersComponent},
-        ]}
+        ]},
+        {path:'profile',component:ProfileComponent},
         
       ],canActivate:[AuthService]},
     
@@ -168,7 +181,10 @@ import { AllUsersComponent } from './all-users/all-users.component';
   providers: [
     UserService,
     AuthService,
-    AutoLoginService
+    AutoLoginService,
+    RoutesService,
+    StudentService,
+    ToasterService
   ],
   bootstrap: [AppComponent]
 })

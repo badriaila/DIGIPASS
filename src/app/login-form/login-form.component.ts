@@ -24,10 +24,6 @@ export class LoginFormComponent implements OnInit {
    error='';
    success=''
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
   login(){
     this.userService.login(this.data)
     .subscribe(res=>{
@@ -36,8 +32,7 @@ export class LoginFormComponent implements OnInit {
       this.success = result.response;
       localStorage.setItem('access_token',result.access_token);
       this.userService.decode(result.access_token)
-      this.onNoClick();
-      this.router.navigate(['/admin/dashboard']);
+      this.router.navigateByUrl('/admin/manageStudent');
     },err=>{
       this.error = err.json().response;
     })

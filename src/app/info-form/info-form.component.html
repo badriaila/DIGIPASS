@@ -1,57 +1,19 @@
 <div class="container float-right col-md-5 col-12 outer" @dropin>
 <mat-card class="inner">
-    <mat-radio-group class="row"  [(ngModel)]="infoType">
-        <mat-radio-button class="col-md-6 col-12" value="reg" color="primary">Reg.no Info</mat-radio-button>
-        <mat-radio-button class="col-md-6 col-12" value="bus" color="primary">Buses Info</mat-radio-button>
-      </mat-radio-group>
-      <br>
       <div class="container" [ngClass]="{'run-animation':infoType === 'reg'}">
         <h5 *ngIf="infoType=='reg'">
             Please enter your registered identification number.
         </h5> 
-      <form #loginForm="ngForm" autocomplete="off" *ngIf="infoType=='reg'">
+      <form #loginForm="ngForm" autocomplete="off">
             <div class="example-container">
                     <br><br>
                     <mat-form-field class="col-12">
-                      <input matInput ngModel placeholder="Enter Reg. No" name="regno" required minlength="10">
-                        <mat-error>
-                            Please enter the <strong>Valid Reg. no</strong> 
-                        </mat-error>
+                      <input matInput ngModel placeholder="Enter Reg. No" name="regno" required minlength="10" ngModel #search="ngModel" required>
+                        
                     </mat-form-field><br><br>
                     
-                    <button type="submit" class="example-full-width container" mat-raised-button [disabled]="loginForm.form.invalid" color="primary" >Search</button>
-            </div>
-           </form>
-        </div>
-           <div class="container" [ngClass]="{'run-animation':infoType === 'bus'}"> 
-        <h5 *ngIf="infoType=='bus'">
-                Lorem Bus is simply dummy text of the printing and typesetting industry.
-        </h5>
-        <form #loginForm="ngForm" autocomplete="off" *ngIf="infoType=='bus'">
-                <div class="example-container">
-                        <mat-form-field class="col-12">
-                                <mat-select ngModel name="origin" placeholder="Select Origin" required>
-                                  <mat-option value="option">Option-1</mat-option>
-                                  <mat-option value="option">Option-2</mat-option>
-                                  <mat-option value="option">Option-3</mat-option>
-                                </mat-select>
-                                <mat-error>
-                                        Please select the <strong>Origin</strong> 
-                                </mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="col-12">
-                                <mat-select ngModel name="destination" placeholder="Select Destination" required>
-                                  <mat-option value="option">Option-1</mat-option>
-                                  <mat-option value="option">Option-2</mat-option>
-                                  <mat-option value="option">Option-3</mat-option>
-                                </mat-select>
-                                <mat-error>
-                                        Please select the <strong>Destination</strong> 
-                                </mat-error>
-                        </mat-form-field><br><br>
-                        
-                        <button type="submit" class="example-full-width container" mat-raised-button [disabled]="loginForm.form.invalid" color="primary" >Search</button>
-                </div>
+                    <button type="submit" routerLink="studentSearchDetails"  class="example-full-width container" mat-raised-button [disabled]="search.invalid" color="primary"  [queryParams]={search:search.value} >Search</button>
+                    </div>
                </form>
            </div>
 </mat-card>

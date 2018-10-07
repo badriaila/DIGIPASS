@@ -1,3 +1,45 @@
-<p>
-  profile works!
-</p>
+<mat-card>
+  <div class="row profile-head-div">
+
+    <div class="col-md-11 col-12" style="background-color: darkgray;">
+      <p style="margin-top: 15px;" class="col-md-10">Profile</p>  
+    </div>
+
+    <div class="col-md-1 col-1" style="background-color: darkgray;">
+      <button mat-mini-fab style="margin-top: 7px;" color="primary" (click)="activate()"> <i class="fas fa-pen"></i> </button>
+    </div>
+
+  </div>
+
+  <div class="row profile-div" style="margin-top: 10px;">
+    <div class="col-md-6">
+        <mat-form-field class="col-md-6" >
+            <input matInput placeholder="First Name" required value="Badri" [disabled]="isDisabled">
+          </mat-form-field>
+          <mat-form-field class="col-md-6" >
+              <input matInput placeholder="Last Name" required  value="Aila" [disabled]="isDisabled">
+            </mat-form-field>
+            <mat-form-field class="col-md-6" >
+                <input matInput placeholder="Mobile" value="9494246461" [disabled]="isDisabled">
+              </mat-form-field>
+              <mat-form-field class="col-md-6" >
+                  <input matInput placeholder="Email" value="ailabadhri@gmail.com" [disabled]="isDisabled">
+                </mat-form-field>
+                <button mat-raised-button class="col-md-2" style="margin-left:20px;" color="primary" (click)="submit()" [disabled]="isDisabled"> Save </button>
+    </div>
+
+    <div class="col-md-6 col-12" style="margin-top: 10px;">
+        <button mat-flat-button style="margin-right: 20px;" (click)="dialog()"> Change username </button>
+      <button mat-flat-button > Change password </button>
+    </div>
+  </div>
+
+
+  
+
+  
+
+
+</mat-card>
+
+

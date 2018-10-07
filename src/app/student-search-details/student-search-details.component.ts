@@ -3,34 +3,31 @@ import { ActivatedRoute } from '@angular/router';
 import { StudentService } from '../services/student.service';
 import { RoutesService } from '../services/routes.service';
 import { BusesService } from '../services/buses.service';
-import { ToasterService } from '../services/toaster.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-dashboard-search',
-  templateUrl: './admin-dashboard-search.component.html',
-  styleUrls: ['./admin-dashboard-search.component.css']
+  selector: 'app-student-search-details',
+  templateUrl: './student-search-details.component.html',
+  styleUrls: ['./student-search-details.component.css']
 })
-export class AdminDashboardSearchComponent implements OnInit {
+export class StudentSearchDetailsComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
     private studentService:StudentService,
     private routeService:RoutesService,
-    private busesService: BusesService,
-    private toasterService:ToasterService
+    private busesService: BusesService
   ) { 
     this.route.queryParams.subscribe(params=>{
       if(params.search)
         this.searchByReg(params.search)
     })
   }
-  
-    isdisabled=true;
+
   ngOnInit() {
     this.getCities(),
     this.getRoutes() 
   }
-
   selectedCourse={};
 
   courses=[
@@ -112,7 +109,6 @@ export class AdminDashboardSearchComponent implements OnInit {
       this.stages=[];
   }
 
-
   getBuses(id){
     this.studentData.busNo=''
     this.busesService.getBusesByRoute(id)
@@ -126,7 +122,9 @@ export class AdminDashboardSearchComponent implements OnInit {
     this.studentService.getByRegNo(regno)
     .subscribe(res=>{
       let data = res.json().response[0]
-      let studentData={
+      console.log(data)
+      
+      let studentData= {
       regNo : data.regNo,
       firstName : data.firstName,
       lastName : data.lastName,
@@ -139,7 +137,9 @@ export class AdminDashboardSearchComponent implements OnInit {
       seatNo : data.seatNo,
       receiptNo : data.receiptNo,
       createdOn:data.createdOn
-      }
+      
+      
+    }
       this.studentId=data._id;
       this.studentData = studentData;
       this.getStages(data.route.city._id)
@@ -147,20 +147,10 @@ export class AdminDashboardSearchComponent implements OnInit {
       this.selectedRoute.city = data.route.city._id
       this.selectedRoute.stage = data.route.stage._id
       this.getBusesByRoute();
-    },err=>{
-      this.studentData=false;
-    })
+    }
+    
+  )
   }
 
-  update(){
-    this.studentService.updateData(this.studentId,this.studentData)
-    .subscribe(res=>{
-      this.isdisabled=true;
-      console.log(res);
-    })
-  }
 
-  activate(){
-    this.isdisabled=false;
-  }
 }

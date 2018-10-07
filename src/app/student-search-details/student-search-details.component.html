@@ -1,0 +1,121 @@
+
+ <!-- <div class="header_add col-12" style="background-color: darkgray;line-height: 50px;">
+    Add Student
+  </div>-->
+  <div class="alert alert-danger content" *ngIf="!studentData"> No Data Available</div>
+  <mat-card class="form row content"  *ngIf="studentData">
+      <div class="col-md-12 col-12 add_student_form row">
+        <div class="col-md-2 col-12">
+          <mat-form-field class=" col-md-12 col-12" >
+              <input matInput placeholder="Regd. No." required [value]="studentData.regNo" disabled>
+            </mat-form-field>
+          </div>
+        
+       <div class="col-md-2 col-12">
+        <mat-form-field class="col-md-12 col-12">
+        <input matInput placeholder="First Name" required  [(ngModel)]="studentData.firstName" disabled #firstName='ngModel' ngModel>
+      </mat-form-field>
+      </div>
+
+      <div class="col-md-2 col-12">
+      <mat-form-field class="col-md-12 col-12">
+        <input matInput placeholder="Last Name" required value="Aila" [(ngModel)]="studentData.lastName" disabled #lastName='ngModel' ngModel>
+      </mat-form-field>
+      </div>
+
+      <div class="col-md-2 col-12">
+        <mat-form-field class="col-md-12 col-12">
+          <mat-select placeholder="Course" required ngModel #course="ngModel" [(ngModel)]="studentData.course" disabled>
+            <mat-option *ngFor="let course of courses" [value]="course.name" (click)="selectedCourse=course" >
+             {{course.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2 col-12">
+        <mat-form-field class="col-md-12 col-12">
+          <mat-select placeholder="Branch" required ngModel #branch="ngModel" [(ngModel)]="studentData.branch" disabled>
+            <mat-option *ngFor="let branch of selectedCourse.branches" [value]="branch">
+              {{branch}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <mat-select placeholder="Year" required ngModel #year="ngModel" [(ngModel)]="studentData.year" disabled>
+              <mat-option *ngFor="let year of selectedCourse.years" [value]="year">
+                {{year}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <input matInput placeholder="Mobile Number" [(ngModel)]="studentData.mobile" disabled pattern="[0-9]{10}" ngModel #mobileNumber="ngModel">
+          </mat-form-field>
+        </div>
+            
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <input matInput placeholder="Email" [(ngModel)]="studentData.email" disabled>
+          </mat-form-field> 
+        </div> 
+
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <mat-select placeholder="City" required [(ngModel)]="selectedRoute.city" ngModel #city="ngModel" disabled>
+              <mat-option *ngFor="let city of cities" [value]="city._id" (click)="getStages(city._id)">
+                {{city.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <mat-select placeholder="Stage" required [(ngModel)]="selectedRoute.stage" ngModel #stage="ngModel" disabled>
+              <mat-option *ngFor="let stage of stages" [value]="stage._id" (click)="getBusesByRoute()">
+                {{stage.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <mat-select placeholder="Bus no." required ngModel #busNo="ngModel" [(ngModel)]="studentData.busNo" disabled>
+              <mat-option *ngFor="let bus of buses" [value]="bus._id">
+                {{bus.busno}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <input matInput placeholder="Seat No." required disabled [(ngModel)]="studentData.seatNo" pattern="[0-9]{2}" ngModel #seatNo="ngModel" >
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <input matInput placeholder="Receipt No." required disabled [(ngModel)]="studentData.receiptNo" ngModel #receiptNo="ngModel" >
+          </mat-form-field> 
+        </div>
+                    
+        <div class="col-md-2 col-12">
+          <mat-form-field class="col-md-12 col-12">
+            <input matInput placeholder="Amount" [value]="studentData.amount" disabled >
+          </mat-form-field> 
+        </div>
+  
+      </div> 
+
+    </mat-card>
+   
+  
+  

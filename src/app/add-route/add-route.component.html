@@ -1,49 +1,43 @@
 
-
-
 <div class="row" style="margin-left: 10px;">
-  
-    <label for="" class="col-md-12">Route Id.</label>
-<div class="form-group busId col-md-6">
-  <input type="text" class="form-control"  placeholder="Route Id ">
-</div>
-</div>
-
-
-<div class="row" style="margin-left: 10px;">
-<label for="" class="col-md-12">City</label>
-<div class="form-group city col-md-6">
-<select name="" id="" class="form-control"  placeholder=" City ">
-  
-  <option value="">
-    123
-  </option>
-  <option value="">
-    456
-  </option>
+<label for="city" class="col-md-12">City</label>
+<div class="form-group city col-md-8">
+<select name="city" id="city" class="form-control" (change)="getStages()"
+ placeholder="City" ngModel #city="ngModel" [(ngModel)]="data.city" required>
+  <option value="">--</option>
+  <ng-container *ngFor="let city of cities">
+    <option [value]="city?._id">{{city?.name}}</option>
+  </ng-container>
 </select>
+<small *ngIf="city.touched && city.invalid" class="text-danger">please select city</small>
 </div>
 </div>
-
 
 <div class="row" style="margin-left: 10px;">
 <label for="" class="col-md-12">Stage</label>
-<div class="form-group stage col-md-6">
-  <select name="" id="" class="form-control"  placeholder=" Stage ">
-    <option value="">
-      123
-    </option>
-    <option value="">
-      456
-    </option>
+<div class="form-group stage col-md-8">
+  <select name="" id="" class="form-control"  placeholder=" Stage " ngModel #stage="ngModel" [(ngModel)]="data.stage" required>
+    <option value="">--</option>
+    <ng-container *ngFor="let stage of stages">
+      <option [value]="stage?._id">{{stage?.name}}</option>
+    </ng-container>
   </select>
+  <small *ngIf="stage.touched && stage.invalid" class="text-danger">please select stage</small>
   </div>
 </div>
 
+<div class="row" style="margin-left: 10px;">
+  <label for="cost" class="col-md-12">Cost</label>
+  <div class=" form-group stage col-md-8">
+  <input type="number" name="cost" id="cost" class="form-control" ngModel #cost="ngModel" [(ngModel)]="data.cost" required>
+
+  <small *ngIf="cost.touched && data.cost == 0" class="text-danger">please enter Amount</small>
+</div>
+</div>
 
 
   <div class="col-md-6 btn " style="margin-left: 10px;">  
-    <button mat-raised-button Mat-tool-tip="Adds a new Student" color="primary"> Add route </button>
+    <button mat-raised-button Mat-tool-tip="Adds a new Student" [disabled]="city.invalid || stage.invalid || data.cost == 0" color="primary" (click)="submit()"> Add route </button>
 
   </div>
 

@@ -2,99 +2,191 @@
  <!-- <div class="header_add col-12" style="background-color: darkgray;line-height: 50px;">
     Add Student
   </div>-->
-   <div class="edit row">
+  <div class="alert alert-danger" *ngIf="!studentData"> No Data Available</div>
+   <div class="edit row" *ngIf="studentData && isdisabled">
       <div class="col-md-6"></div>
       <div class="col-md-6">
 
-          <button mat-mini-fab color='primary' routerLink="add_student" class="col-md-1 col-1" style="border:none;"><i class="fas fa-pen"></i></button>
+          <button mat-mini-fab color='primary' routerLink="add_student" class="col-md-1 col-1" style="border:none;float: right" (click)="activate()"><i class="fas fa-pen"></i></button>
 
       </div>
    </div>
-  <div class="form row">
-      <div class="col-md-12 add_student_form">
-          <mat-form-field class="col-md-2" >
-              <input matInput placeholder="Regd. No." required value="16471A05A4" disabled >
+
+  <div class="form row"  *ngIf="studentData">
+      <div class="col-md-12 add_student_form row">
+        <div class="col-md-2">
+          <mat-form-field class=" col-md-12" >
+              <input matInput placeholder="Regd. No." required [value]="studentData.regNo" disabled>
             </mat-form-field>
+          </div>
         
-        <mat-form-field class="col-md-2">
-        <input matInput placeholder="First Name" required  value="Badri Nadh" disabled>
+          <div class="col-md-2">
+        <mat-form-field class="col-md-12">
+        <input matInput placeholder="First Name" required  [(ngModel)]="studentData.firstName" [disabled]="isdisabled" #firstName='ngModel' ngModel>
       </mat-form-field>
-      
-      <mat-form-field class="col-md-2">
-        <input matInput placeholder="Last Name" required value="Aila" disabled>
+      <div class="col-md-12 error">
+      <small class="text-danger" *ngIf="firstName.touched && firstName.invalid">
+        <small *ngIf="firstName.errors.required"> First name is required </small>
+      </small>
+    </div>
+    </div>
+
+      <div class="col-md-2">
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="Last Name" required value="Aila" [(ngModel)]="studentData.lastName" [disabled]="isdisabled" #lastName='ngModel' ngModel>
       </mat-form-field>
-  
-      <mat-form-field class="col-md-2">
-          <mat-select placeholder="Course" required>
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.viewValue}}
+      <div class="col-md-12 error">
+      <small class="text-danger" *ngIf="lastName.touched && lastName.invalid">
+        <small *ngIf="lastName.errors.required"> Last name is required </small>
+      </small>
+    </div>
+    </div>
+
+    <div class="col-md-2">
+      <mat-form-field class="col-md-12">
+        <mat-select placeholder="Course" required ngModel #course="ngModel" [(ngModel)]="studentData.course" disabled>
+          <mat-option *ngFor="let course of courses" [value]="course.name" (click)="selectedCourse=course" >
+            {{course.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="col-md-12 error">
+      <small *ngIf="course.touched && course.invalid" class="text-danger"> 
+            <small *ngIf="course.errors.required"> Course is required </small>
+      </small>
+    </div>
+    </div>
+
+      <div class="col-md-2">
+      <mat-form-field class="col-md-12">
+          <mat-select placeholder="Branch" required ngModel #branch="ngModel" [(ngModel)]="studentData.branch" disabled>
+            <mat-option *ngFor="let branch of selectedCourse.branches" [value]="branch">
+              {{branch}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-  
-        <mat-form-field class="col-md-2">
-            <mat-select placeholder="Branch" required>
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
+        <div class="col-md-12 error">
+        <small *ngIf="branch.touched && branch.invalid" class="text-danger">
+          <small *ngIf="branch.errors.required"> Branch is required</small>
+        </small>
+        </div>
+      </div>
+
+        <div class="col-md-2">
+        <mat-form-field class="col-md-12">
+            <mat-select placeholder="Year" required ngModel #year="ngModel" [(ngModel)]="studentData.year" [disabled]="isdisabled">
+              <mat-option *ngFor="let year of selectedCourse.years" [value]="year">
+                {{year}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <div class="col-md-12 error">
+          <small class="text-danger" *ngIf="year.touched && year.invalid">
+            <small *ngIf="year.errors.required"> Year is required</small>
+          </small>
+          </div>
+        </div>
   
-          <mat-form-field class="col-md-2">
-              <mat-select placeholder="Year" required>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-  
-  
-            <mat-form-field class="col-md-2">
-                <input matInput placeholder="Mobile Number" >
+          <div class="col-md-2">
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Mobile Number" [(ngModel)]="studentData.mobile" [disabled]="isdisabled" pattern="[0-9]{10}" ngModel #mobileNumber="ngModel">
               </mat-form-field>
-  
-              <mat-form-field class="col-md-2">
-                  <input matInput placeholder="Email" >
-                </mat-form-field>  
-  
-                <mat-form-field class="col-md-2">
-                    <mat-select placeholder="City" required>
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
+              <div class="col-md-12 error">
+              <small *ngIf="mobileNumber.touched && mobileNumber.invalid" class="text-danger">
+                <small *ngIf="mobileNumber.errors.pattern">Mobile number is Invalid</small>
+              </small>
+              </div>
+            </div>
+            
+            <div class="col-md-2">
+              <mat-form-field class="col-md-12">
+                  <input matInput placeholder="Email" [(ngModel)]="studentData.email" [disabled]="isdisabled">
+                </mat-form-field> 
+              </div> 
+
+                <div class="col-md-2">
+                <mat-form-field class="col-md-12">
+                  <mat-select placeholder="City" required [(ngModel)]="selectedRoute.city" ngModel #city="ngModel" [disabled]="isdisabled">
+                    <mat-option *ngFor="let city of cities" [value]="city._id" (click)="getStages(city._id)">
+                      {{city.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="col-md-12 error">
+                <small class="text-danger" *ngIf="city.touched && city.invalid">
+                  <small *ngIf="city.errors.required"> City is required </small>
+                </small>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <mat-form-field class="col-md-12">
+                    <mat-select placeholder="Stage" required [(ngModel)]="selectedRoute.stage" ngModel #stage="ngModel" [disabled]="isdisabled">
+                      <mat-option *ngFor="let stage of stages" [value]="stage._id" (click)="getBusesByRoute()">
+                        {{stage.name}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
+                  <div class="col-md-12 error">
+                  <small class="text-danger" *ngIf="stage.touched && stage.invalid">
+                    <small *ngIf="stage.errors.required"> Stage is required  </small>
+                  </small>
+                  </div>
+                </div>
   
-                  <mat-form-field class="col-md-2">
-                      <mat-select placeholder="Stage" required>
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                          {{food.viewValue}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+                    <div class="col-md-2">
+                  <mat-form-field class="col-md-12">
+                    <mat-select placeholder="Bus no." required ngModel #busNo="ngModel" [(ngModel)]="studentData.busNo" [disabled]="isdisabled">
+                      <mat-option *ngFor="let bus of buses" [value]="bus._id">
+                        {{bus.busno}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="col-md-12 error">
+                  <small class="text-danger" *ngIf="busNo.touched && busNo.invalid">
+                    <small *ngIf="busNo.errors.required"> Bus No. is required </small>
+                  </small>  
+                  </div>
+                </div>
   
+                  <div class="col-md-2">
+                    <mat-form-field class="col-md-12">
+                      <input matInput placeholder="Seat No." required [disabled]="isdisabled" [(ngModel)]="studentData.seatNo" pattern="[0-9]{2}" ngModel #seatNo="ngModel" >
+                    </mat-form-field> 
+                    <div class="col-md-12 error">
+                    <small class="text-danger" *ngIf="seatNo.touched && seatNo.invalid">
+                      <small *ngIf='seatNo.errors.required'> Seat No is required </small>
+                      <small *ngIf="seatNo.errors.pattern"> Invalid seatNo (pattern:01,02..) </small>
+                    </small>
+                    </div>
+                  </div>
+
+
+                    <div class="col-md-2">
+                    <mat-form-field class="col-md-12">
+                      <input matInput placeholder="Receipt No." required [disabled]="isdisabled" [(ngModel)]="studentData.receiptNo" ngModel #receiptNo="ngModel" >
+                    </mat-form-field> 
+                    <div class="col-md-12 error">
+                    <small class="text-danger" *ngIf="receiptNo.touched && receiptNo.invalid">
+                      <small *ngIf = " receiptNo.errors.required "> Receipt No. is required </small>
+                    </small>
+                    </div>
+                  </div>
                     
-                    <mat-form-field class="col-md-2">
-                      <input matInput placeholder="Bus No." required>
+                    <div class="col-md-2">
+                    <mat-form-field class="col-md-12">
+                      <input matInput placeholder="Amount" [value]="studentData.amount" disabled >
                     </mat-form-field> 
-  
-  
-                    <mat-form-field class="col-md-2">
-                      <input matInput placeholder="Seat No." required >
-                    </mat-form-field> 
-  
-                    <mat-form-field class="col-md-2">
-                      <input matInput placeholder="Receipt No." required >
-                    </mat-form-field> 
-  
-                    <mat-form-field class="col-md-2">
-                      <input matInput placeholder="Amount" value="10000" disabled>
-                    </mat-form-field> 
-  
-                    <button mat-flat-button color="primary" class="col-md-3" style="margin-left:200px">Add Student</button>
-    </div>
-    <div class="col-md-6"></div>
+                  </div>
   
     </div>
+    
   
+    
+    <button mat-flat-button color="primary" *ngIf="!isdisabled" class="col-md-2" style="margin-left:200px" (click)="update()"
+    [disabled]="firstName.invalid || lastName.invalid || year.invalid || city.invalid || stage.invalid || busNo.invalid || seatNo.invalid || receiptNo.invalid ">Update</button>
+    
+    <button mat-flat-button color="warn" *ngIf="!isdisabled" class="col-md-2" (click)="isdisabled=true" style="margin-left:200px">Cancel</button>
+    </div>
+
   

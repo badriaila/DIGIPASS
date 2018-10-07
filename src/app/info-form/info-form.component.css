@@ -1,12 +1,13 @@
 .outer{
-    height:500px;
+    height:400px;
     margin-top:-500px;
-    padding: 40px;
+    padding: 20px;
 }
 .inner{
     min-height:100%;
     height:auto;
-    padding: 50px;
+    padding: 30px;
+    
 }
 button{
     font-weight: 300;
@@ -16,8 +17,9 @@ button{
 }
 @media only screen and (max-width: 770px){
     .outer{
-        margin-top:0px;
+        margin-top:10px;
         padding:5px;
+        height: 200px;
     }
     .inner{
         padding: 10px;

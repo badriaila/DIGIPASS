@@ -16,11 +16,11 @@ export class DashboardSidebarComponent implements OnInit {
   }
 
   navItems=[
-    {name:'Dashboard',link:'dashboard',icon:'fas fa-tachometer-alt'},
+   /* {name:'Dashboard',link:'dashboard',icon:'fas fa-tachometer-alt'},*/
     {name:'Manage Students',link:'manageStudent',icon:'fas fa-user'},
     {name:'Manage Routes',link:'manageRoutes',icon:'fas fa-map-marked-alt'},
-    {name:'Manage Buses',link:'manageBuses',icon:'fas fa-bus'},
-    {name:'Manage Users',link:'manageUsers',icon:'fas fa-users'},
+    {name:'Manage Buses',link:'manageBuses',icon:'fas fa-bus'},/*
+    {name:'Manage Users',link:'manageUsers',icon:'fas fa-users'},*/
     {name:'Profile',link:'profile',icon:'fas fa-user-circle'},
     
   ]
